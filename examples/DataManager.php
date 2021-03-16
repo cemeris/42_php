@@ -24,6 +24,20 @@ class DataManager
         $this->save();
     }
 
+    public function delete($id) {
+        if (array_key_exists($id, $this->db)) {
+            unset($this->db[$id]);
+            $this->save();
+        }
+    }
+
+    public function update($id, $new_value){
+        if (array_key_exists($id, $this->db)) {
+            $this->db[$id] = $new_value;
+            $this->save();
+        }
+    }
+
     public function getAll() {
         return $this->db;
     }
