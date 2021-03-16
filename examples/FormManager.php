@@ -15,6 +15,10 @@ class FormManager extends DataManager
             $req['message'] !== ''
         ) {
             echo "test add method";
+            parent::add([
+                'username' => $req['username'],
+                'message' => $req['message']
+            ]);
         }
     }
 }
