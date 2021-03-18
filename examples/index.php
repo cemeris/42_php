@@ -23,7 +23,6 @@ $manager = new FormManager();
         <?php
             foreach ($manager->getAll() as $key => $value) {
                 $username = $value['username'];
-                $message = $value['message'];
                 echo "<option value='$key'>$key : $username</option>";
             }
         ?>
@@ -39,18 +38,25 @@ $manager = new FormManager();
 
 if (array_key_exists('action', $_REQUEST)) {
     if ($_REQUEST['action'] == 'add') {
+/* Add entry */
         $manager->add($_REQUEST);
     }
     elseif ($_REQUEST['action'] == 'update') {
+/* Update entry */
         $manager->updateMessages($_REQUEST);
     }
 }
 
+/*
+    Delete entry
+*/
 if (array_key_exists('delete', $_REQUEST)) {
     $manager->delete($_REQUEST['delete']);
 }
 
-
+/*
+    Display entries
+*/
 if ($manager->getAll() !== []) {
     echo "<h2>View</h2>";
     echo "<ul>";

@@ -36,7 +36,6 @@ class FormManager extends DataManager
             $req['message'] !== '' &&
             $req['id'] !== ''
         ) {
-            echo "test add method";
             $this->update(
                 $req['id'],
                 [

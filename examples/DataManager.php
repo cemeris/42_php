@@ -15,7 +15,7 @@ class DataManager
     }
 
     protected function save() {
-        $content = json_encode($this->db);
+        $content = json_encode($this->db, JSON_PRETTY_PRINT);
         file_put_contents($this->file_name, $content);
     }
 

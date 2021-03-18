@@ -14,3 +14,7 @@
   text-align: center;
   margin: 10px;
 }
+
+.container a:nth-child(2n) {
+  background: lightgreen;
+}
