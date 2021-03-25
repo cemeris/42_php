@@ -19,4 +19,18 @@ class Controller
         file_put_contents($this->file_name, json_encode($this->db));
     }
 
+    public function increase($id) {
+        if (array_key_exists($id, $this->db['links'])) {
+            $value = $this->db['links'][$id];
+        }
+        else {
+            $value = $id;
+        }
+        $this->add($id, ++$value);
+    }
+
+    public function getAll() {
+        return $this->db['links'];
+    }
+
 }

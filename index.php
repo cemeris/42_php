@@ -44,8 +44,7 @@ $manager = new Controller();
 if (array_key_exists('id', $_GET)) {
     if ($_GET['id'] % 3 === 0) {
         echo $_GET['id'];
-        $new_value = $_GET['id'] + 1;
-        $manager->add($_GET['id'], $new_value);
+        $manager->increase($_GET['id']);
     }
 }
 ?>
@@ -53,11 +52,15 @@ if (array_key_exists('id', $_GET)) {
 <div class="container">
 <?php 
 
-for ($i = 1; $i <= $amount; $i++) {
-    $classes = ($i % 5 == 0) ? 'class="fifth"' : '';
-
-    $value = $i;
-    echo "<a $classes href='?id=$i'>$value</a>";
+for ($id = 1; $id <= $amount; $id++) {
+    $classes = ($id % 5 == 0) ? 'class="fifth"' : '';
+    if(array_key_exists($id, $manager->getAll())) {
+        $value = $manager->getAll()[$id];
+    }
+    else {
+        $value = $id;
+    }
+    echo "<a $classes href='?id=$id'>$value</a>";
 }
 
 ?>
